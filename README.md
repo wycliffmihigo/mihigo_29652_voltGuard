@@ -39,7 +39,7 @@ rejects and logs suspicious readings.
 - No personal data: one household, and the columns are electrical measurements only (date, time, power, voltage,
   intensity, sub-metering), so no person is identified ✔
 
-## Innovation (8 marks)
+## Innovation 
 **Option:** User interface. **Tool:** Oracle APEX (fallback: Python Streamlit or Flask, both allowed by the brief).
 Staff enter readings and generate bills; each action calls a PL/SQL procedure. A customer looks up a bill through an
 ORDS REST endpoint. The rules stay in PL/SQL; the app only shows and uses the data.
@@ -68,5 +68,3 @@ METER_READING 1-1 BILL (per billing period); TARIFF_VERSION 1-N BILL; METER 1-N 
 
 
 
-## References
-See `docs/research/research_log.md` (APA).
