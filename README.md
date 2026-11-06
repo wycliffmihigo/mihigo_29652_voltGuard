@@ -37,7 +37,7 @@ rejects and logs suspicious readings.
 - Licence: CC BY 4.0, confirmed on the UCI page on 6 Nov 2026. It allows sharing and adaptation for any purpose
   with credit, so educational use is allowed. Credit: Hebrail & Berard (2012), https://doi.org/10.24432/C58K54
 - No personal data: one household, and the columns are electrical measurements only (date, time, power, voltage,
-  intensity, sub-metering), so no person is identified ✔
+  intensity, sub-metering), so no person is identified 
 
 ## Innovation 
 **Option:** User interface. **Tool:** Oracle APEX (fallback: Python Streamlit or Flask, both allowed by the brief).
