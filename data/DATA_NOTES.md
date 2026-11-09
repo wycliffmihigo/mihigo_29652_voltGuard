@@ -7,7 +7,7 @@
   France. About 1.25% of rows have missing measurements. Licence: CC BY 4.0.
   DOI: https://doi.org/10.24432/C58K54
 - The raw file is larger than GitHub's 100 MB limit, so it is not stored in this repository. A small sample
-  (the first 500 rows) will be stored as `data/sample_uci_power.csv`.
+  (the first 225 rows) will be stored as `data/sample_uci_power.csv`.
 - **RURA tariffs:** the 2020 board decision (effective 21 January 2020) and the October 2025 public notice
   (effective 1 October 2025) are entered into TARIFF_VERSION and TARIFF_BAND from the official PDFs. Prices
   exclude VAT and the regulatory fee, so bills show the energy charge before VAT.
