@@ -66,5 +66,16 @@ METER_READING 1-1 BILL (per billing period); TARIFF_VERSION 1-N BILL; METER 1-N 
 | Package `volt_pkg` | Groups the procedures and functions |
 | Custom exceptions | Unknown meter, missing tariff, reading below previous |
 
+## Phase I - Business Process Modeling
+
+### Brief Description of the Selected Business Process
+The selected core process is the **Meter Reading and Billing Process**. It covers how the utility records monthly household electricity consumption, validates the reading against historical records to detect regressive values or potential meter tampering, applies the correct versioned Rwanda Utilities Regulatory Authority (RURA) tariff rules, calculates the accurate energy charge, and generates the final customer bill.
+
+### Modeling Tool Used
+* **Tool Name:** draw.io (diagrams.net)
+* **Published Diagram Link:** [https://viewer.diagrams.net/?tags=%7B%7D&lightbox=1&highlight=0000ff&edit=_blank&layers=1&nav=1&dark=auto#G19tTn0oAWQrUKiVlDk6lFtFjBSTm7gpMA]
+
+### Supporting Explanation Document
+* **Document Link:** [docs/business_process/business_process_explanation.pdf](docs/business_process/business_process_explanation.pdf)
 
 
