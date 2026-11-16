@@ -51,7 +51,7 @@ rejects and logs suspicious readings.
 | Household consumption | Real | UCI Machine Learning Repository, *Individual Household Electric Power Consumption* (Hebrail & Berard, 2012): 2,075,259 measurements, 9 attributes, December 2006 to November 2010, one household in Sceaux, France, about 1.25% missing values. [Dataset page](https://archive.ics.uci.edu/dataset/235/individual+household+electric+power+consumption) · [DOI](https://doi.org/10.24432/C58K54) |
 | Tariffs (current) | Real | RURA public notice of 17 September 2025, effective 1 October 2025. [PDF](https://www.rura.rw/fileadmin/user_upload/RURA/Documents/Tariffs/Public_Notice_on_Electricity_End_User_Tariff__October_2025_.pdf) |
 | Tariffs (previous) | Real | RURA Board Decision N°01/BD/ER-EWS/RURA/2020, effective 21 January 2020. [PDF](https://www.rura.rw/fileadmin/user_upload/RURA/Documents/Tariffs/Board_Decision_on_Electricity_End_User_Tariffs_in_Rwanda.pdf) |
-| Customers, meters, districts, billing periods | Simulated, labelled as such | Generated for this project, with consumption scaled using Mugyenyi et al. ([paper](https://qsel.columbia.edu/assets/uploads/blog/2024/publications/Rwandas_path_to_universal_electricity_access_consumption_trends_tarriff_impact_and_challenges_ahead.pdf)) |
+| Customers, meters, districts, billing periods | Simulated, labelled as such | Generated for this project, with consumption scaled 
 
 - The UCI household is French, so its readings are used for the *shape* of consumption and scaled to Rwandan levels
   (about 22 kWh per month in 2019, Mugyenyi et al.). The scaling method is documented in [`data/DATA_NOTES.md`](data/DATA_NOTES.md).
