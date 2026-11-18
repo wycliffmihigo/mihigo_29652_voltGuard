@@ -59,8 +59,9 @@ rejects and logs suspicious readings.
   with credit. Credit: Hebrail & Berard (2012), https://doi.org/10.24432/C58K54
 - **No personal data:** one household, and the columns are electrical measurements only (date, time, power, voltage,
   intensity, sub-metering), so no person is identified.
-- The raw file is too large for GitHub, so only a small sample is stored in [`data/sample_uci_power.csv`](data/sample_uci_power.csv).
+- The raw file is too large for GitHub, the original zip is stored in data/raw/ and in dataset card
 
+  
 ## Innovation
 **Option:** User interface. **Tool:** Oracle APEX (fallback: Python Streamlit or Flask, both allowed by the brief).
 Staff enter readings and generate bills; each action calls a PL/SQL procedure. A customer looks up a bill through an
