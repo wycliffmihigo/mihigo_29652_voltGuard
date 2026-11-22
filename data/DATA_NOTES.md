@@ -6,7 +6,8 @@
   Sub_metering_1, Sub_metering_2, Sub_metering_3), December 2006 to November 2010, one household in Sceaux,
   France. About 1.25% of rows have missing measurements. Licence: CC BY 4.0.
   DOI: https://doi.org/10.24432/C58K54
-- The raw file is larger than GitHub's 100 MB limit, so it is not stored in this repository.the original zip is stored in data/raw/, and a sample of the first rows is in data/sample_uci_power.csv A 
+- The original UCI download is stored unedited as a zip in data/raw/. A small sample of the first rows is in data/sample_uci_power.csv.
+  
 - **RURA tariffs:** the 2020 board decision (effective 21 January 2020) and the October 2025 public notice
   (effective 1 October 2025) are entered into TARIFF_VERSION and TARIFF_BAND from the official PDFs. Prices
   exclude VAT and the regulatory fee, so bills show the energy charge before VAT.
