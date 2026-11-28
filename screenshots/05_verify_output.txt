@@ -1,0 +1,85 @@
+SQL> 
+SQL> -- Who and where, with the date and time (shown on every screenshot).
+SQL> SELECT SYS_CONTEXT('USERENV','SESSION_USER') AS db_user,
+  2         SYS_CONTEXT('USERENV','CON_NAME')     AS pdb,
+  3         TO_CHAR(SYSDATE,'YYYY-MM-DD HH24:MI:SS') AS run_time
+  4  FROM   dual;
+
+DB_USER
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+PDB
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+RUN_TIME           
+-------------------
+MIHIGO_ADMIN                                                                                                                                                                                                                
+TUE_29652_MIHIGO_VOLTGUARD_DB                                                                                                                                                                                               
+2026-11-22 18:34:17
+
+
+SQL> 
+SQL> 
+SQL> SELECT name, open_mode FROM v$pdbs;
+
+NAME                                                                                                                             OPEN_MODE 
+-------------------------------------------------------------------------------------------------------------------------------- ----------
+TUE_29652_MIHIGO_VOLTGUARD_DB                                                                                                    READ WRITE
+
+SQL> 
+SQL> 
+SQL> SELECT username, default_tablespace, temporary_tablespace
+  2  FROM   dba_users WHERE username = 'MIHIGO_ADMIN';
+
+USERNAME                                                                                                                         DEFAULT_TABLESPACE             TEMPORARY_TABLESPACE          
+-------------------------------------------------------------------------------------------------------------------------------- ------------------------------ ------------------------------
+MIHIGO_ADMIN                                                                                                                     VOLTGUARD_DATA                 VOLTGUARD_TEMP                
+
+SQL> 
+SQL> SELECT tablespace_name, DECODE(max_bytes, -1, 'UNLIMITED', max_bytes) AS quota
+  2  FROM   dba_ts_quotas WHERE username = 'MIHIGO_ADMIN';
+
+TABLESPACE_NAME      QUOTA                                   
+-------------------- ----------------------------------------
+VOLTGUARD_IDX        UNLIMITED                               
+VOLTGUARD_DATA       UNLIMITED                               
+
+SQL> 
+SQL> 
+SQL> SELECT tablespace_name, file_name,
+  2         bytes / 1024 / 1024 AS size_mb,
+  3         autoextensible,
+  4         increment_by * (SELECT TO_NUMBER(value) FROM v$parameter WHERE name = 'db_block_size') / 1024 / 1024 AS next_mb,
+  5         maxbytes / 1024 / 1024 AS max_mb
+  6  FROM   dba_data_files
+  7  WHERE  tablespace_name LIKE 'VOLTGUARD%'
+  8  UNION ALL
+  9  SELECT tablespace_name, file_name,
+ 10         bytes / 1024 / 1024,
+ 11         autoextensible,
+ 12         increment_by * (SELECT TO_NUMBER(value) FROM v$parameter WHERE name = 'db_block_size') / 1024 / 1024,
+ 13         maxbytes / 1024 / 1024
+ 14  FROM   dba_temp_files
+ 15  WHERE  tablespace_name LIKE 'VOLTGUARD%'
+ 16  ORDER  BY 1;
+
+TABLESPACE_NAME      FILE_NAME                                                                 SIZE_MB AUT    NEXT_MB     MAX_MB
+-------------------- ---------------------------------------------------------------------- ---------- --- ---------- ----------
+VOLTGUARD_DATA       C:\ORACLE21C\ORADATA\ORCL\TUE_29652_MIHIGO_VOLTGUARD_DB\VOLTGUARD_DATA        100 YES         10       1024
+                     01.DBF                                                                                                     
+
+VOLTGUARD_IDX        C:\ORACLE21C\ORADATA\ORCL\TUE_29652_MIHIGO_VOLTGUARD_DB\VOLTGUARD_IDX0         50 YES         10        500
+                     1.DBF                                                                                                      
+
+VOLTGUARD_TEMP       C:\ORACLE21C\ORADATA\ORCL\TUE_29652_MIHIGO_VOLTGUARD_DB\VOLTGUARD_TEMP         50 YES         10        500
+                     01.DBF                                                                                                     
+
+
+SQL> 
+SQL> 
+SQL> SELECT name, log_mode FROM v$database;
+
+NAME      LOG_MODE    
+--------- ------------
+ORCL      ARCHIVELOG  
+
+SQL> 
+SQL> SPOOL OFF

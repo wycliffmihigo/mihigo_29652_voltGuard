@@ -1,0 +1,31 @@
+
+
+SET ECHO ON
+SET LINESIZE 200
+SELECT SYS_CONTEXT('USERENV','SESSION_USER') AS db_user,
+       SYS_CONTEXT('USERENV','CON_NAME')     AS pdb,
+       TO_CHAR(SYSDATE,'YYYY-MM-DD HH24:MI:SS') AS run_time
+FROM   dual;
+
+
+COLUMN pdb_dir NEW_VALUE pdb_dir NOPRINT
+SELECT REGEXP_SUBSTR(name, '^.*[\/]') AS pdb_dir FROM v$datafile WHERE ROWNUM = 1;
+
+
+CREATE TABLESPACE voltguard_data
+  DATAFILE '&pdb_dir.voltguard_data01.dbf' SIZE 100M
+  AUTOEXTEND ON NEXT 10M MAXSIZE 1G;
+
+CREATE TABLESPACE voltguard_idx
+  DATAFILE '&pdb_dir.voltguard_idx01.dbf' SIZE 50M
+  AUTOEXTEND ON NEXT 10M MAXSIZE 500M;
+
+CREATE TEMPORARY TABLESPACE voltguard_temp
+  TEMPFILE '&pdb_dir.voltguard_temp01.dbf' SIZE 50M
+  AUTOEXTEND ON NEXT 10M MAXSIZE 500M;
+
+ALTER USER mihigo_admin
+  DEFAULT TABLESPACE voltguard_data
+  TEMPORARY TABLESPACE voltguard_temp
+  QUOTA UNLIMITED ON voltguard_data
+  QUOTA UNLIMITED ON voltguard_idx;
